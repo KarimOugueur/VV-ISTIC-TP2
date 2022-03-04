@@ -9,7 +9,7 @@ Après le lancement de PMD nous avons trouvés une erreur dans le projet https:/
 
 
 
-Problème  toruvé avec PMD, il compare deux objects avec (==) au lieu d'un .equals(). Ce problème est un faux négatif et ne nécissite pas de correction. 
+Problème  toruvé avec PMD, il compare deux objects avec (==) au lieu d'un .equals(). Ce problème est un faux négatif et ne nécissite pas de correction car il veut comparer la référence des objets et pas les valeurs des objets. et si on mets à la place de (==) un .equals, la condition n'aura plus de sense.  
 ```java
   commons-collections/src/main/java/org/apache/commons/collections4/multiset/AbstractMultiSet.java:77:	CompareObjectsWithEquals:	Use equals() to compare object  references.
 ``` 
