@@ -6,7 +6,7 @@ Pick a Java project from Github (see the [instructions](../sujet.md) for suggest
 
 Après le lancement de PMD nous avons trouvés une erreur dans le projet https://github.com/apache/commons-collections de type : 
 
-
+Je n'ai pas trouvé de vrai positif ( à revoir). 
 
 
 Problème  toruvé avec PMD, il compare deux objects avec (==) au lieu d'un .equals(). Ce problème est un faux négatif et ne nécissite pas de correction car il veut comparer la référence des objets et pas les valeurs des objets. et si on mets à la place de (==) un .equals, la condition n'aura plus de sense.  
