@@ -23,3 +23,50 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
+La commande xpath pour chercher au moins 3 if imbriqués est la commande suivante :
+
+//BlockStatement[
+    count(//IfStatement)>=3
+]
+
+La règle xml est la suivante :
+
+<rule name=""
+      language="java"
+      message=""
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+   <description>
+
+   </description>
+   <priority>3</priority>
+   <properties>
+      <property name="version" value="1.0"/>
+      <property name="xpath">
+         <value>
+<![CDATA[
+//BlockStatement[
+    count(//IfStatement)>=3
+]
+]]>
+         </value>
+      </property>
+   </properties>
+</rule>
+
+Nous avons testé avec le programme suivant :
+
+public class Main{
+   public  static  void main(String[] args) {
+        int a = 0, b= 0;
+        if (a==b) {
+            b=a;
+            if (a==b) {
+                a=b;
+               if (a==b) {
+                   a=b;
+                }
+            }
+        }
+   }
+}        
+
