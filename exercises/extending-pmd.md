@@ -23,3 +23,65 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
+La commande xpath pour chercher au moins 3 if imbriqués est la commande suivante :
+
+//BlockStatement//IfStatement//IfStatement//IfStatement
+
+La règle xml est la suivante :
+
+<rule name=""
+      language="java"
+      message=""
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+   <description>
+
+   </description>
+   <priority>3</priority>
+   <properties>
+      <property name="version" value="1.0"/>
+      <property name="xpath">
+         <value>
+<![CDATA[
+//BlockStatement//IfStatement//IfStatement//IfStatement
+]]>
+         </value>
+      </property>
+   </properties>
+</rule>
+
+Nous avons testé avec les programmes suivants :
+
+// Doit détecter 3 if imbriqués
+public class Main{
+   public  static  void main(String[] args) {
+        int a = 0, b= 0;
+        if (a==b) {
+            b=a;
+            if (a==b) {
+                a=b;
+               if (a==b) {
+                   a=b;
+                }
+            }
+        }
+   }
+}        
+
+// Ne doit pas détecter 3 if imbriqués
+public class Main{
+   public  static  void main(String[] args) {
+        int a = 0, b= 0;
+        if (a==b) {
+            b=a;
+            if (a==b) {
+                a=b;
+            }
+            if (a==b) {
+                a=b;
+            }
+        }
+   }
+}        
+
+Nous avons testé avec plusieurs classes java du projet commons-math. Cette règle a l'air de bien fonctionner et de détecter les if imbriqués.
+
