@@ -25,9 +25,7 @@ Use your rule with different projects and describe you findings below. See the [
 
 La commande xpath pour chercher au moins 3 if imbriqués est la commande suivante :
 
-//BlockStatement[
-    count(//IfStatement)>=3
-]
+//BlockStatement//IfStatement//IfStatement//IfStatement
 
 La règle xml est la suivante :
 
@@ -44,17 +42,16 @@ La règle xml est la suivante :
       <property name="xpath">
          <value>
 <![CDATA[
-//BlockStatement[
-    count(//IfStatement)>=3
-]
+//BlockStatement//IfStatement//IfStatement//IfStatement
 ]]>
          </value>
       </property>
    </properties>
 </rule>
 
-Nous avons testé avec le programme suivant :
+Nous avons testé avec les programmes suivants :
 
+// Doit détecter 3 if imbriqués
 public class Main{
    public  static  void main(String[] args) {
         int a = 0, b= 0;
@@ -69,4 +66,22 @@ public class Main{
         }
    }
 }        
+
+// Ne doit pas détecter 3 if imbriqués
+public class Main{
+   public  static  void main(String[] args) {
+        int a = 0, b= 0;
+        if (a==b) {
+            b=a;
+            if (a==b) {
+                a=b;
+            }
+            if (a==b) {
+                a=b;
+            }
+        }
+   }
+}        
+
+Nous avons testé avec plusieurs classes java du projet commons-math. Cette règle a l'air de bien fonctionner et de détecter les if imbriqués.
 
