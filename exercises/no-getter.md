@@ -42,6 +42,7 @@ Dans la map, nous avons comme clé le package, et une paire (classe, champs sans
 public class PublicElementsPrinter extends VoidVisitorWithDefaults<Map<String, Pair<String, Set<String>>>> {}
 
 ```
+Nous avons créé une methode qui nous eprmet d'exporter le résultat en CSV. 
 
 
 ```Java
@@ -198,7 +199,11 @@ public class PublicElementsPrinter extends VoidVisitorWithDefaults<Map<String, P
 ```
 
 
-Nousa vons testé avec ce code : 
+Nousa vons testé avec ce code :
+
+Repo : https://github.com/apache/commons-collections/tree/master/src 
+
+Ce test permet de génrer un ficher CSV. 
 
 ```Java
 package fr.istic.vv;
@@ -210,10 +215,11 @@ import java.util.Set;
 import com.github.javaparser.utils.Pair;
 import com.github.javaparser.utils.SourceRoot;
 
+
 public class Main {
     
-    public static void main(String [] args) throws Exception{
-        
+    public static void main() throws Exception{
+
         String pathDirectory= "/home/ougueur/Bureau/M2_ILAAAA/vv/commons-collections/src/main/java/org/apache/commons/collections4"; 
         //String pathDirectory="/home/ougueur/Bureau/M2_ILAAAA/vv/commons-collections/src/test/java/org/apache/commons/collections4";
     
