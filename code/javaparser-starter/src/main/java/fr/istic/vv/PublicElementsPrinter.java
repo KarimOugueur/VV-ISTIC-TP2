@@ -132,16 +132,22 @@ public class PublicElementsPrinter extends VoidVisitorWithDefaults<Map<String, P
      */
     public void exportCSV(Map<String, Pair<String, Set<String>>> arg) throws IOException {
        
+         PrintWriter pw = null;
+        
         for ( String p : arg.keySet()){
             if(!arg.get(p).b.isEmpty()){
                 dataLines.add(new String[] { "Package : " + p , " Class : "+ arg.get(p).a.toString(),  "Fields Without Getter : " + arg.get(p).b.toString() });
             }
                 
         }
-        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-            dataLines.stream()
-              .map(this::convertToCSV)
-              .forEach(pw::println);
+        try {
+            pw = new PrintWriter(csvOutputFile);
+            dataLines.stream().map(this::convertToCSV).forEach(pw::println);
+        } catch( Exception e){
+            e.printStackTrace();
+            
+        } finally {
+            pw.close();
         }
     }
  
