@@ -13,15 +13,15 @@ Il faut que le nombre de connexions indirectes soit égale à 0. Ainsi, toutes l
 
 Par exemple, cette classe possède une forte cohésion. Elle est facile à maintenir et hautement réutilisable :
 
-class Multiply {
-    int a = 5;
-    int b = 5;
-    public int mul(int a, int b)
-    {
-        this.a = a;
-        this.b = b;
-        return a * b;
+    class Multiply {
+        int a = 5;
+        int b = 5;
+        public int mul(int a, int b)
+        {
+            this.a = a;
+            this.b = b;
+            return a * b;
+        }
     }
-}
 
 Avec le calcul précédent, on peut en déduire que TCC <= LCC. Il y a forcément le même nombre de connexions directes. Il peut également y avoir des connexions indirectes.
