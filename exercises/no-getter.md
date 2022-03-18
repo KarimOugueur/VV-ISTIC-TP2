@@ -38,6 +38,8 @@ Pour cette partie de parserJava, nous avons utulisés le projet existant "javapa
 Dans un premier temps, nous avoons modifié le code afin de passer en paramètre du visitor une map<String, Pair> et certaines methodes afin de récupérer l'ensemble des champs sans getter, leurs classes, et enfin leurs package. 
 Dans la map, nous avons comme clé le package, et une paire (classe, champs sans getter). 
 
+Lancez le Main avec pour paramettre le chemin vers le code que vous aimeriez tester. il vous créera un ficheier csv. 
+
 ```Java
 public class PublicElementsPrinter extends VoidVisitorWithDefaults<Map<String, Pair<String, Set<String>>>> {}
 

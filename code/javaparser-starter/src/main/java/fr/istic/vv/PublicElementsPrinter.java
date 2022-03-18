@@ -114,6 +114,7 @@ public class PublicElementsPrinter extends VoidVisitorWithDefaults<Map<String, P
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
     }
 
     /**
